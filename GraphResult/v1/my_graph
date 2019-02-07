@@ -1,0 +1,35 @@
+digraph {
+	bbs
+	travel
+	frontpage
+	"on-air"
+	news
+	sports
+	local
+	weather
+	business
+	tech
+	misc
+	"msn-news"
+	"msn-sports"
+	living
+	health
+	opinion
+	summary
+	bbs -> travel
+	travel -> frontpage
+	travel -> "on-air"
+	travel -> news
+	travel -> sports
+	travel -> local
+	travel -> weather
+	travel -> business
+	travel -> tech
+	travel -> misc
+	travel -> "msn-news"
+	travel -> "msn-sports"
+	travel -> living
+	travel -> health
+	travel -> opinion
+	travel -> summary
+}
