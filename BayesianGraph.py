@@ -5,23 +5,19 @@ import pandas as pd
 import numpy as np
 from time import time
 import graphviz as gv
-
 import os
-os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
 
 train = pd.read_csv('../msnbcWithHeader.csv', sep=',')
 train = train[train.sum(axis=1)<200]
 train[train>1] = 1
 
 train_start = time()
-
 bic = BicScore(train)
 hc = HillClimbSearch(train, scoring_method=bic)
 best_model = hc.estimate(prog_bar=True)
 edges = best_model.edges()
 model = BayesianModel(edges)
-
-model.fit(train,estimator=BayesianEstimator, prior_type="BDeu")
+model.fit(train, estimator=BayesianEstimator, prior_type="BDeu")
 variables = model.nodes()
 
 print(model.edges())
@@ -34,6 +30,3 @@ for node in variables:
 for edge in edges:
     my_graph.edge(edge[0],edge[1])
 filename = my_graph.render('../graph', view=True)
-
-writer = BIFWriter(model)
-writer.write_bif(filename='../model_extracted.bif')

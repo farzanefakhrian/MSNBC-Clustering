@@ -2,7 +2,6 @@ import bnpy
 import numpy as np
 import os
 import pandas as pd
-
 from matplotlib import pylab
 import seaborn as sns
 
@@ -13,7 +12,6 @@ dataset = np.asarray(pd.read_csv("msnbc_wh.csv", sep= ','))
 
 dataset[np.sum(dataset,axis =1 )>200]
 dataset[dataset>1]=1
-
 
 def show_clusters_over_time(task_output_path=None,query_laps=[0, 1, 2, 5, 10, None],nrows=2):
 
